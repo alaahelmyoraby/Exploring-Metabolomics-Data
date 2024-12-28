@@ -22,7 +22,7 @@ library(dplyr)
 Set the working directory to the location of your data files:
 ```r
 # Set the directory where data files are located
-setwd("C:/My pc/Egcombio/IOSB/lec")
+setwd("C:/Egcombio/IOSB/lec")
 ```
 
 ### 2. Load Datasets
