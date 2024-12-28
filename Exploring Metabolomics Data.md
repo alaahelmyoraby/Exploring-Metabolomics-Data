@@ -159,9 +159,22 @@ num_tests <- nrow(results_matrix)
 bonferroni_threshold <- alpha / num_tests
 
 # Identify significant metabolites
+  # Extract results for Phenotype1
+  beta_rs1 <- summary(rs1)$coefficients[2, 1]
+  se_rs1 <- summary(rs1)$coefficients[2, 2]
+  pval_rs1 <- summary(rs1)$coefficients[2, 4]
+  
+  beta_rs2 <- summary(rs2)$coefficients[2, 1]
+  se_rs2 <- summary(rs2)$coefficients[2, 2]
+  pval_rs2 <- summary(rs2)$coefficients[2, 4]
+  
+  # Store results in matrix
+  results_matrix[i, ] <- c(beta_rs1, se_rs1, pval_rs1, beta_rs2, se_rs2, pval_rs2)
+}
+
+# Convert results matrix to data frame
 results_df <- as.data.frame(results_matrix)
-significant_metabolites <- results_df[results_df$Pval_NoCovariate < bonferroni_threshold, ]
-significant_metabolites <- significant_metabolites[order(significant_metabolites$Pval_NoCovariate), ]
+
 ```
 
 ### 12. Save Results
